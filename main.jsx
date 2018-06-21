@@ -73,6 +73,7 @@ class Button extends Accounts.ui.Button {
       label,
       href = null,
       type,
+      fluid = true,
       disabled = false,
       onClick,
       className,
@@ -87,6 +88,7 @@ class Button extends Accounts.ui.Button {
       <button className={ [
                 'ui button',
                 type == 'submit' ? 'primary' : '',
+                fluid ? 'fluid' : '',
                 disabled ? 'disabled' : '',
                 className
               ].join(' ') }
@@ -123,14 +125,13 @@ class Field extends Accounts.ui.Field {
     const { mount = true } = this.state;
     return mount ? (
       <div className={["ui field", required ? "required" : ""].join(' ')}>
-        <label htmlFor={ id }>{ label }</label>
         <div className="ui fluid input">
           <input id="password" name="password" style={{display: 'none'}} />
           <input id={ id }
                  name={ id }
                  type={ type }
                  ref={ (ref) => this.input = ref }
-                 autoCapitalize={ type == 'email' ? 'none' : false }
+                //  autoCapitalize={ type == 'email' ? 'none' : false }
                  autoCorrect="off"
                  onChange={ onChange }
                  placeholder={ hint } defaultValue={ defaultValue } />
